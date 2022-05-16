@@ -80,21 +80,27 @@ namespace Scheduler
             }
             
             //Calls the calculate method
-            calculateDate(typeComboBox.SelectedText, dateTimeTextBox.Text);
+            calculateDate(currentDateTextBox.Text, dateTimeTextBox.Text);
         }
 
-        private void calculateDate(String type, String DateTime)
+        private void calculateDate(String currentDate, String dateTime)
         {
+            int index = typeComboBox.SelectedIndex;
             //Calculates the time
-            try
+            switch (index)
             {
-                DateCalculator date = new DateCalculator();
-                DateTime calculatedDate = date.calculateDate(type, DateTime);
-                nextExecutionTextBox.Text = calculatedDate.ToString("dd'/'MM'/'yyyy");
-            }
-            catch (System.FormatException)
-            {
-                nextExecutionTextBox.Text = "Error al calcular fecha.";
+                case (int)EnumTypes.Types.Once:
+                    OnceDateCalculator onceDate = new OnceDateCalculator();
+                    DateTime calculatedOceDate = onceDate.calculateDate(currentDate, dateTime);
+                    nextExecutionTextBox.Text = calculatedOceDate.ToString("dd'/'MM'/'yyyy HH:mm");
+                    break;
+                case (int)EnumTypes.Types.Recurring:
+                    RecurringDateCalculator recurringDate = new RecurringDateCalculator();
+                    DateTime calculatedRecurringDate = recurringDate.calculateDate(currentDate, dateTime,occursComboBox,daysNumericUpDown);
+                    nextExecutionTextBox.Text = calculatedRecurringDate.ToString("dd'/'MM'/'yyyy");
+                    break;
+                default:
+                    break;
             }
         }
             
