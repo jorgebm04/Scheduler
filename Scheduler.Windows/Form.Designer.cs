@@ -1,6 +1,6 @@
-﻿namespace Scheduler
+﻿namespace Scheduler.Windows
 {
-    partial class GUIScheduler
+    public partial class GUIScheduler
     {
         /// <summary>
         ///  Required designer variable.
@@ -49,7 +49,7 @@
             this.startDateTextBox = new System.Windows.Forms.TextBox();
             this.startDateLabel = new System.Windows.Forms.Label();
             this.outputGroupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.nextExecutionTextBox = new System.Windows.Forms.TextBox();
             this.nextExecutionLabel = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.calculateDateButton.TabIndex = 2;
             this.calculateDateButton.Text = "Calculate next date";
             this.calculateDateButton.UseVisualStyleBackColor = true;
-            this.calculateDateButton.Click += new System.EventHandler(this.CheckInfo);
+            this.calculateDateButton.Click += new System.EventHandler(this.CheckAndCalculate);
             // 
             // currentDateTextBox
             // 
@@ -92,7 +92,7 @@
             this.currentDateTextBox.Name = "currentDateTextBox";
             this.currentDateTextBox.Size = new System.Drawing.Size(130, 23);
             this.currentDateTextBox.TabIndex = 1;
-            this.currentDateTextBox.Text = "13/05/2022";
+            this.currentDateTextBox.Text = "17/05/2022";
             // 
             // currentDateLabel
             // 
@@ -160,7 +160,6 @@
             this.occursComboBox.Name = "occursComboBox";
             this.occursComboBox.Size = new System.Drawing.Size(133, 23);
             this.occursComboBox.TabIndex = 6;
-            this.occursComboBox.SelectedIndexChanged += new System.EventHandler(this.occursComboBox_SelectedIndexChanged);
             // 
             // ocursLabel
             // 
@@ -274,7 +273,7 @@
             // 
             // outputGroupBox1
             // 
-            this.outputGroupBox1.Controls.Add(this.textBox1);
+            this.outputGroupBox1.Controls.Add(this.descriptionTextBox);
             this.outputGroupBox1.Controls.Add(this.descriptionLabel);
             this.outputGroupBox1.Controls.Add(this.nextExecutionTextBox);
             this.outputGroupBox1.Controls.Add(this.nextExecutionLabel);
@@ -287,16 +286,16 @@
             this.outputGroupBox1.TabStop = false;
             this.outputGroupBox1.Text = "Output";
             // 
-            // textBox1
+            // descriptionTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 60);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(532, 45);
-            this.textBox1.TabIndex = 3;
+            this.descriptionTextBox.Location = new System.Drawing.Point(5, 60);
+            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.descriptionTextBox.Multiline = true;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.ReadOnly = true;
+            this.descriptionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.descriptionTextBox.Size = new System.Drawing.Size(532, 45);
+            this.descriptionTextBox.TabIndex = 3;
             // 
             // descriptionLabel
             // 
@@ -352,30 +351,30 @@
 
         #endregion
 
-        private GroupBox inputGroup;
-        private Button calculateDateButton;
-        private TextBox currentDateTextBox;
-        private Label currentDateLabel;
-        private GroupBox configurationGroup;
-        private CheckBox enabledCheckBox;
-        private ComboBox typeComboBox;
-        private Label typeLabel;
-        private Label ocursLabel;
-        private TextBox dateTimeTextBox;
-        private Label dateTimeLabel;
-        private Label daysLabel;
-        private Label everyLabel;
-        private ComboBox occursComboBox;
-        private NumericUpDown daysNumericUpDown;
-        private GroupBox limitsGroupBox1;
-        private TextBox endDateTextBox;
-        private Label endDateLabel;
-        private TextBox startDateTextBox;
-        private Label startDateLabel;
-        private GroupBox outputGroupBox1;
-        private TextBox textBox1;
-        private Label descriptionLabel;
-        private TextBox nextExecutionTextBox;
-        private Label nextExecutionLabel;
+        public GroupBox inputGroup;
+        public Button calculateDateButton;
+        public TextBox currentDateTextBox;
+        public Label currentDateLabel;
+        public GroupBox configurationGroup;
+        public CheckBox enabledCheckBox;
+        public ComboBox typeComboBox;
+        public Label typeLabel;
+        public Label ocursLabel;
+        public TextBox dateTimeTextBox;
+        public Label dateTimeLabel;
+        public Label daysLabel;
+        public Label everyLabel;
+        public ComboBox occursComboBox;
+        public NumericUpDown daysNumericUpDown;
+        public GroupBox limitsGroupBox1;
+        public TextBox endDateTextBox;
+        public Label endDateLabel;
+        public TextBox startDateTextBox;
+        public Label startDateLabel;
+        public GroupBox outputGroupBox1;
+        public TextBox descriptionTextBox;
+        public Label descriptionLabel;
+        public TextBox nextExecutionTextBox;
+        public Label nextExecutionLabel;
     }
 }

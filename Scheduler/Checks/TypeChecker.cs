@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Scheduler
 {
-    internal class EnabledChecker
+    internal class TypeChecker
     {
-        public Boolean checkEnabled(CheckBox enable)
+        public static bool CheckScheduleType(int index)
         {
-            if (enable.Checked == false)
+            if (index == -1)
             {
-                throw new Exception();
+                return false;
             }
-            return enable.Checked;
+            return true;
         }
     }
 }
