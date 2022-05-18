@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scheduler
 {
-    internal class OccursChecker
+    public class OccursChecker
     {
         public static bool CheckOccurs(int index)
         {

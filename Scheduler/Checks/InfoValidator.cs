@@ -82,7 +82,7 @@ namespace Scheduler
                 return;
             }
 
-            settings.exit = "Dates format not valid.";
+            settings.exit = "";
             return;
         }   
     }

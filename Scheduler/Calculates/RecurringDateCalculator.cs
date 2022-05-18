@@ -15,7 +15,7 @@ namespace Scheduler
             //Calculates the time
             switch (freq)
             {
-                case 0:
+                case (int)EnumOccurs.Occurs.Daily:
                     calculatedDate = currentDate.AddDays(days);
                     break;
                 default:

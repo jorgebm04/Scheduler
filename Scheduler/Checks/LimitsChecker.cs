@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Scheduler
 {
-    internal class LimitsChecker
+    public class LimitsChecker
     {
         public static bool CheckLimits(DateTime start, DateTime end, DateTime nextSchedule, DateTime currentDay, int type)
         {

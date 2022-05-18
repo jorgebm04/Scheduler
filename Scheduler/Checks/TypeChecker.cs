@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Scheduler
 {
-    internal class TypeChecker
+    public class TypeChecker
     {
         public static bool CheckScheduleType(int index)
         {

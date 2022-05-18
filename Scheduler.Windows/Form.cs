@@ -23,43 +23,57 @@ namespace Scheduler.Windows
             } catch (FormatException)
             {
                 nextExecutionTextBox.Text = "Current date format not correct.";
+                return;
             }
             settings.type = typeComboBox.SelectedIndex;
             settings.enable = enabledCheckBox.Checked;
-            try
+            if(settings.type == (int)EnumTypes.Types.Once)
             {
-                settings.dateTime = DateTime.ParseExact(dateTimeTextBox.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                try
+                {
+                    settings.dateTime = DateTime.ParseExact(dateTimeTextBox.Text, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+                }
+                catch (FormatException)
+                {
+                    nextExecutionTextBox.Text = "DateTime format not correct.";
+                    return;
+                }
             }
-            catch (FormatException)
-            {
-                nextExecutionTextBox.Text = "DateTime format not correct.";
-            }
+            
             settings.occurs = occursComboBox.SelectedIndex;
             settings.days = (double)daysNumericUpDown.Value;
             try
             {
-                settings.startDate = DateTime.ParseExact(startDateLabel.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                settings.startDate = DateTime.ParseExact(startDateTextBox.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
             catch (FormatException)
             {
                 nextExecutionTextBox.Text = "Start limit format not correct.";
+                return;
             }
-            try
+            if (settings.type == (int)EnumTypes.Types.Recurring)
             {
-                settings.endDate = DateTime.ParseExact(endDateLabel.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            }
-            catch (FormatException)
-            {
-                nextExecutionTextBox.Text = "End limit format not correct.";
-            }
-
+                try
+                {
+                    settings.endDate = DateTime.ParseExact(endDateTextBox.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                }
+                catch (FormatException)
+                {
+                    nextExecutionTextBox.Text = "End limit format not correct.";
+                    return;
+                }
+            }           
+      
             //Check the info
             InfoValidator.CheckInfo(settings);
             nextExecutionTextBox.Text = settings.exit;
+            
             //Calls the calculate method
             if(settings.exit.Length == 0)
             {       
-                DateCalculator.calculateDate(settings.currentDate, settings.dateTime,settings);
+                DateCalculator.CalculateDate(settings.currentDate, settings.dateTime,settings);
+                nextExecutionTextBox.Text = settings.exit;
+                descriptionTextBox.Text = settings.description;
             } else
             {
                 return;

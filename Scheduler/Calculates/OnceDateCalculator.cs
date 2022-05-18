@@ -9,7 +9,7 @@ namespace Scheduler
 {
     public class OnceDateCalculator 
     {
-        public DateTime calculateOnceDate(DateTime scheduleDate)
+        public DateTime CalculateOnceDate(DateTime scheduleDate)
         {
             return scheduleDate;
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Scheduler
 {
-    internal class DateTimeChecker
+    public class DateTimeChecker
     {
         public static bool CheckDateTime (DateTime dateTime, DateTime currentDate)
         {          
